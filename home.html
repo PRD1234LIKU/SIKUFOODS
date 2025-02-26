@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siku Foods</title>
+  <!-- Font Awesome CDN for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .container {
+      position: relative;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .content {
+      text-align: center;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      font-size: 24px;
+      margin-bottom: 40px;
+    }
+    .content h1 {
+      margin: 20px 0;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .grid-item {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .grid-item:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+    .grid-item img {
+      width: 100%;
+      height: 310px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    .grid-item p {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+    .add-to-cart {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      background-color: #ff6347;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .add-to-cart:hover {
+      background-color: #e5533d;
+    }
+    .box1, .box2, .box3, .box4, .box5, .box6 {
+      background-color: rgba(71, 133, 187, 0.7);
+    }
+    .cart-section {
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 40px auto;
+      max-width: 1000px;
+    }
+    .cart-section h2 {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #ccc;
+    }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    .cart-summary {
+      margin-top: 10px;
+      text-align: right;
+    }
+    #place-order {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #place-order:hover {
+      background: #45a049;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: normal;
+      margin-right: 15px;
+      transition: color 0.3s, font-weight 0.3s;
+    }
+    footer a:hover {
+      color: #70ed3a;
+     
+    }
+    .footer-left a:last-child,
+    .footer-right a:last-child {
+      margin-right: 0;
+    }
+    /* Style for the social icon links */
+    .footer-right a {
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop id="bg-video" class="bg-video">
+    <source src="images/SIKU VIDEO.mp4" type="video/mp4" />
+  </video>
+  
+  <div class="container">
+    <div class="content">
+      <p><i>"Sehat ki kyun fear, when SIKU FOODS is here"</i></p>
+      <h1>Welcome to Siku Foods</h1>
+      <p class="lead">Delicious food, delivered to your doorstep.</p>
+    </div>
+    
+    <section>
+      <div class="grid-container">
+        <div class="grid-item box1">
+          <img src="images/hello1.jpeg" alt="Food 1" />
+          <p>Chuda Cutlet</p>
+          <p>Price: ₹55 (5 pc)</p>
+          <button class="add-to-cart" data-name="Chuda Cutlet" data-price="55">Add to Cart</button>
+        </div>
+        <div class="grid-item box2">
+          <img src="images/hello2.jpeg" alt="Food 2" />
+          <p>Paneer Butter Masala with Chakuli Pitha</p>
+          <p>Price: ₹75 (3 pc pitha)</p>
+          <button class="add-to-cart" data-name="Paneer Butter Masala with Chakuli Pitha" data-price="75">Add to Cart</button>
+        </div>
+        <div class="grid-item box3">
+          <img src="images/hello4.jpeg" alt="Food 3" />
+          <p>Veg Pasta</p>
+          <p>Price: ₹55</p>
+          <button class="add-to-cart" data-name="Veg Pasta" data-price="55">Add to Cart</button>
+        </div>
+        <div class="grid-item box4">
+          <img src="images/hii.jpeg" alt="Food 4" />
+          <p>Veg Dum Biryani</p>
+          <p>Price: ₹90</p>
+          <button class="add-to-cart" data-name="Veg Dum Biryani" data-price="90">Add to Cart</button>
+        </div>
+        <div class="grid-item box5">
+          <img src="images/hii2.jpeg" alt="Food 5" />
+          <p>Chuda Upma</p>
+          <p>Price: ₹50</p>
+          <button class="add-to-cart" data-name="Chuda Upma" data-price="50">Add to Cart</button>
+        </div>
+        <div class="grid-item box6">
+          <img src="images/hii3.jpeg" alt="Food 6" />
+          <p>Chilli Soyabean</p>
+          <p>Price: ₹60</p>
+          <button class="add-to-cart" data-name="Chilli Soyabean" data-price="60">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+    
+    <section class="cart-section">
+      <h2>Your Cart</h2>
+      <div id="cart-items"></div>
+      <div class="cart-summary">
+        <p>Total: ₹<span id="cart-total">0</span></p>
+        <!-- The Place Order button now triggers a redirection -->
+        <button id="place-order">Place Order</button>
+      </div>
+    </section>
+    
+    <div style="height: 500px;"></div>
+  </div>
+  
+  <script>
+    document.getElementById('bg-video').addEventListener('play', function () {
+      setTimeout(() => {
+        document.querySelector('.content').style.opacity = '1';
+      }, 1000);
+    });
+    
+    let cartItems = [];
+    
+    function updateCart() {
+      const cartItemsDiv = document.getElementById('cart-items');
+      cartItemsDiv.innerHTML = '';
+      cartItems.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `<span>${item.name}</span><span>₹${item.price}</span>`;
+        cartItemsDiv.appendChild(itemDiv);
+      });
+      
+      const total = cartItems.reduce((sum, item) => sum + Number(item.price), 0);
+      document.getElementById('cart-total').innerText = total;
+    }
+    
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const name = button.getAttribute('data-name');
+        const price = button.getAttribute('data-price');
+        cartItems.push({ name, price });
+        updateCart();
+      });
+    });
+    
+    document.getElementById('place-order').addEventListener('click', () => {
+      if(cartItems.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      const total = cartItems.reduce((sum, item) => sum + Number(item.price), 0);
+      alert(`Processing. Total amount: ₹${total}`);
+     
+      cartItems = [];
+      updateCart();
+      
+      // Redirect to the order page (order.html)
+      window.location.href = "home1.html";
+    });
+  </script>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-left">
+      <a href="#">Help</a>
+      <a href="#">Reviews</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Settings</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+    <div class="footer-right">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+    </div>
+  </footer>
+  
+</body>
+</html>
